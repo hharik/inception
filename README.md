@@ -20,10 +20,13 @@
      - https://medium.com/swlh/wordpress-deployment-with-nginx-php-fpm-and-mariadb-using-docker-compose-55f59e5c1a
 * Understanding Dockerfile && image layers
      - https://www.youtube.com/watch?v=6Er8MAvTWlI&ab_channel=takacsmark
+* Docker Cheat Sheet
+     - https://kapeli.com/cheat_sheets/Dockerfile.docset/Contents/Resources/Documents/index
 * Docker Network
     - https://www.youtube.com/watch?v=bKFMS5C4CG0&t=10s&ab_channel=NetworkChuck
  
 * Configure PHP-FPM with NGINX
     - https://www.digitalocean.com/community/tutorials/php-fpm-nginx
     
-* 
+* Awesome Compose
+    - https://github.com/docker/awesome-compose
