@@ -1,0 +1,29 @@
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    server_name hharik.42.fr;
+
+    ssl_certificate /etc/ssl/certs/nginx.crt;
+    ssl_certificate_key /etc/ssl/private/nginx.key;
+    ssl_protocols TLSv1.3;
+
+    index index.php index.html index.htm index.nginx-debian.html;
+
+    root /var/www/html;
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+    # REQUIREMETS : Enable PHP support
+    	location ~ \.php$ {
+		fastcgi_pass	wordpress:9000;
+		# SECURITY : Zero day Exploit Protection // u only want to serve a determined php file or go to 404 error
+   	 	try_files $uri =404;
+   		 # ENABLE : Enable PHP, listen fpm sock
+   		fastcgi_index index.php;
+    		include fastcgi_params;
+  	 	 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+
+	}
+}

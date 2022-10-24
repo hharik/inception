@@ -1,0 +1,61 @@
+version: "3.6"
+
+services:
+       wordpress:
+              container_name: wordpress
+              build: ./requirements/wordpress/ 
+              image: wordpress
+              restart: always
+              env_file:
+                    -  .env
+              networks:
+                    - private_net
+              ports:
+                    - "9000:9000"
+              volumes:
+                      - wp_data:/var/www/html
+       mariadb:
+              container_name: mariadb
+              build: ./requirements/mariadb/ 
+              image: mariadb
+              networks:
+                    - private_net
+              restart: always
+              env_file:
+                    -  .env
+              ports:
+                    - "3306:3306"
+              volumes:
+                    - db_data:/var/lib/mysql
+       nginx:
+              container_name: nginx
+              build: ./requirements/nginx/ 
+              image: nginx
+              networks:
+                    - private_net
+              env_file:
+                    -  .env
+              restart: unless-stopped
+              ports:
+                      - "443:443"
+              volumes:
+                       - wp_data:/var/www/html
+
+volumes:
+        wp_data:
+            driver: local
+            name: wp
+            driver_opts:
+                  type: none
+                  o: bind
+                  device: /home/hharik/data/wp
+        db_data:
+            driver: local
+            name: db
+            driver_opts:
+                  type: none
+                  o: bind
+                  device: /home/hharik/data/db
+
+networks:
+      private_net:
