@@ -10,7 +10,7 @@
 * A volume that contains your WordPress database.
 * A second volume that contains your WordPress website files.
 * A docker-network that establishes the connection between your containers.
-* more things can be found int the subject!!
+* more things can be found in the subject!!
 
 
 
