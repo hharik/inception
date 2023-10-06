@@ -30,3 +30,6 @@
     
 * Awesome Compose
     - https://github.com/docker/awesome-compose
+
+
+- Note that this is not the finished version of this inception, alot of things here need to change, as the environment variables are not used and instead i hard coded these values in the configFile
